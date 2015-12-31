@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DA9F9C20-FEDC-4F3B-BF08-B42D350BEB86}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3E365C02-E16D-438B-B3D4-E0D59347185B}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CampPlanner", "src\CampPlanner\CampPlanner.xproj", "{69FF269E-FB90-4906-BA6A-43AE60A8FBBF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69FF269E-FB90-4906-BA6A-43AE60A8FBBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69FF269E-FB90-4906-BA6A-43AE60A8FBBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69FF269E-FB90-4906-BA6A-43AE60A8FBBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69FF269E-FB90-4906-BA6A-43AE60A8FBBF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{69FF269E-FB90-4906-BA6A-43AE60A8FBBF} = {DA9F9C20-FEDC-4F3B-BF08-B42D350BEB86}
+	EndGlobalSection
+EndGlobal
