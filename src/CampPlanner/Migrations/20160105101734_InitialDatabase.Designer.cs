@@ -7,7 +7,7 @@ using CampPlanner.Models.Database.Context;
 
 namespace CampPlanner.Migrations
 {
-    [DbContext(typeof(CampContext))]
+    [DbContext(typeof(CampPlannerContext))]
     [Migration("20160105101734_InitialDatabase")]
     partial class InitialDatabase
     {

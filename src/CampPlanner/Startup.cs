@@ -30,7 +30,7 @@ namespace CampPlanner
             services
                .AddEntityFramework()
                .AddSqlServer()
-               .AddDbContext<CampContext>();
+               .AddDbContext<CampPlannerContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

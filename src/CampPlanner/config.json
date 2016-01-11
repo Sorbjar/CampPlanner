@@ -1,5 +1,5 @@
 {
   "Data": {
-    "CampContextConnection": "Server=(localdb)\\ProjectsV12;Database=CampPlannerDB;Trusted_Connection=true;MultipleActiveResultSets=true;"
+    "CampPlannerContextConnection": "Server=(localdb)\\ProjectsV12;Database=CampPlannerDB;Trusted_Connection=true;MultipleActiveResultSets=true;"
   }	
 }

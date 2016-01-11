@@ -7,7 +7,7 @@ using CampPlanner.Models.Database.Context;
 
 namespace CampPlanner.Migrations
 {
-    [DbContext(typeof(CampContext))]
+    [DbContext(typeof(CampPlannerContext))]
     partial class CampContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

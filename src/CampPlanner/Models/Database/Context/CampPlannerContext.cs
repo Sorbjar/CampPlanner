@@ -1,11 +1,13 @@
 ﻿using CampPlanner.Model;
+using CampPlanner.Models.Database.Generic;
 using Microsoft.Data.Entity;
 
 namespace CampPlanner.Models.Database.Context
 {
-    public class CampContext : DbContext
+    public class CampPlannerContext : GenericDBContext
     {
-        public CampContext()
+
+        public CampPlannerContext()
         {
             Database.EnsureCreated();
         }
@@ -13,7 +15,7 @@ namespace CampPlanner.Models.Database.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connString = Startup.Configuration["Data:CampContextConnection"];
+            string connString = Startup.Configuration["Data:CampPlannerContextConnection"];
 
             optionsBuilder.UseSqlServer(connString);
 
