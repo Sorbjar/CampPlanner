@@ -4,6 +4,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.Extensions.Configuration;
 using CampPlanner.Models.Database.Context;
+using Newtonsoft.Json.Serialization;
+using CampPlanner.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Authentication.Cookies;
+using System.Net;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace CampPlanner
 {
@@ -25,7 +32,49 @@ namespace CampPlanner
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services
+                .AddMvc(config =>
+            {
+#if !DEBUG
+                config.Filters.Add(new RequireHttpsAttribute());
+#endif
+            })
+                .AddJsonOptions(opt =>
+                {
+                    opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                });
+
+            services.AddIdentity<CampPlannerUser, IdentityRole>(config =>
+            {
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequiredLength = 8;
+                config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
+                config.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()
+                {
+                    OnRedirectToLogin = ctx =>
+                    {
+                        if (ctx.Request.Path.StartsWithSegments("/api") &&
+                             ctx.Response.StatusCode == (int)HttpStatusCode.OK)
+                        {
+                            ctx.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                        }
+                        else
+                        {
+                            ctx.Response.Redirect(ctx.RedirectUri);
+                        }
+
+                        return Task.FromResult(0);
+                    }
+                };
+            })
+            .AddEntityFrameworkStores<CampPlannerContext>();
+
+            services.AddLogging();
+
+            services
+                .AddEntityFramework()
+                .AddSqlServer()
+                .AddDbContext<CampPlannerContext>();
 
             services
                .AddEntityFramework()
@@ -34,16 +83,31 @@ namespace CampPlanner
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app,
+            ILoggerFactory loggerFactory,
+            IHostingEnvironment env)
         {
+            if (env.IsDevelopment())
+            {
+                loggerFactory.AddDebug(LogLevel.Information);
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                loggerFactory.AddDebug(LogLevel.Error);
+                //app.UseExceptionHandler("/App/Error");
+            }
+
             app.UseStaticFiles();
+            
+            app.UseIdentity();
 
             app.UseMvc(config =>
             {
                 config.MapRoute(
                     name: "Default",
                     template: "{controller}/{action}/{id?}",
-                    defaults: new { controller = "App", Action = "Index" }
+                    defaults: new { controller = "Home", Action = "Index" }
                 );
             });
         }

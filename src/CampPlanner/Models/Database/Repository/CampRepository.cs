@@ -1,4 +1,4 @@
-﻿using CampPlanner.Model;
+﻿using CampPlanner.Models;
 using CampPlanner.Models.Database.Context;
 using CampPlanner.Models.Database.Generic;
 using System;

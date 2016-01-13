@@ -2,9 +2,9 @@
 
 namespace CampPlanner.Controllers.Web
 {
-    public class AppController : Controller
+    public class HomeController : Controller
     {
-        public AppController()
+        public HomeController()
         {
 
         }
