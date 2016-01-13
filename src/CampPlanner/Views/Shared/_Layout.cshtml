@@ -25,6 +25,8 @@
                 <li><a asp-controller="Auth" asp-action="Login">Login</a></li>
             }
             <li class="active"><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="active"><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+            <li class="active"><a asp-controller="Home" asp-action="About">About</a></li>
             @if (User.Identity.IsAuthenticated)
             {
                 <li><a asp-controller="Auth" asp-action="Logout">Logout</a></li>
@@ -42,7 +44,7 @@
                         </button>
                     </li>
                 </ul>
-                <a asp-controller="App" asp-action="Index" class="navbar-brand">CampPlanner</a>
+                <a asp-controller="Home" asp-action="Index" class="navbar-brand">CampPlanner</a>
                 <ul class="nav navbar-nav navbar-right">
                     @*<li>
                             <a href="#" class="btn btn-sm btn-info">
@@ -74,6 +76,7 @@
             </div>
         </div>
     </div>
+
 
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>

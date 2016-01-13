@@ -8,7 +8,22 @@ namespace CampPlanner.Controllers.Web
         {
 
         }
+
         public IActionResult Index()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Camp");
+            }
+            return View();
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult About()
         {
             return View();
         }
