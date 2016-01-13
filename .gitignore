@@ -212,4 +212,4 @@ _Pvt_Extensions/
 ModelManifest.xml
 
 # ASP.Net MVC Lib folder
-src/CampPlanner/wwwroot/lib
+/src/CampPlanner/wwwroot/lib
