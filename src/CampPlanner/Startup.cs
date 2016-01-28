@@ -1,16 +1,17 @@
-﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.PlatformAbstractions;
-using Microsoft.Extensions.Configuration;
+﻿using CampPlanner.Models;
 using CampPlanner.Models.Database.Context;
-using Newtonsoft.Json.Serialization;
-using CampPlanner.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
+using CampPlanner.Models.Database.Repository;
 using Microsoft.AspNet.Authentication.Cookies;
+using Microsoft.AspNet.Builder;
+using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.PlatformAbstractions;
+using Newtonsoft.Json.Serialization;
 using System.Net;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 
 namespace CampPlanner
 {
@@ -67,7 +68,8 @@ namespace CampPlanner
                     }
                 };
             })
-            .AddEntityFrameworkStores<CampPlannerContext>();
+            .AddEntityFrameworkStores<CampPlannerContext>()
+            .AddDefaultTokenProviders();
 
             services.AddLogging();
 
@@ -76,14 +78,14 @@ namespace CampPlanner
                 .AddSqlServer()
                 .AddDbContext<CampPlannerContext>();
 
-            services
-               .AddEntityFramework()
-               .AddSqlServer()
-               .AddDbContext<CampPlannerContext>();
+            services.AddTransient<CampPlannerContextSeedData>();
+            
+            services.AddScoped<ICampPlannerRepository, CampPlannerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app,
+        public async void Configure(IApplicationBuilder app,
+            CampPlannerContextSeedData seeder,
             ILoggerFactory loggerFactory,
             IHostingEnvironment env)
         {
@@ -110,6 +112,8 @@ namespace CampPlanner
                     defaults: new { controller = "Home", Action = "Index" }
                 );
             });
+            
+            await seeder.EnsureSeedDataAsync();
         }
 
         // Entry point for the application.

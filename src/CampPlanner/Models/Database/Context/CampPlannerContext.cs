@@ -1,10 +1,9 @@
-﻿using CampPlanner.Models;
-using CampPlanner.Models.Database.Generic;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 
 namespace CampPlanner.Models.Database.Context
 {
-    public class CampPlannerContext : GenericDBContext
+    public class CampPlannerContext : IdentityDbContext<CampPlannerUser>
     {
 
         public CampPlannerContext()
