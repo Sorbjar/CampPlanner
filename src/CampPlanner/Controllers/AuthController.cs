@@ -76,7 +76,9 @@ namespace CampPlanner.Controllers
             return View();
         }
 
-
+        // POST: /Account/LogOff
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             if (User.Identity.IsAuthenticated)
@@ -99,26 +101,6 @@ namespace CampPlanner.Controllers
 
             return View();
         }
-
-        [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult> Register(RegisterViewModel vm, string returnUrl)
-        {
-            if (ModelState.IsValid)
-            {
-                if ((await _userManager.FindByNameAsync(vm.Username)) == null)
-                {
-                    //TODO
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Username already exists");
-                }
-            }
-
-            return View();
-        }
-
 
         // POST: /Account/Register
         [HttpPost]

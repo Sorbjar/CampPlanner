@@ -9,7 +9,7 @@ namespace CampPlanner.Models.Database.Context
 
         public CampPlannerContext()
         {
-            Database.EnsureCreated();
+           // Database.EnsureCreated();
         }
         public DbSet<Camp> Camps { get; set; }
 
