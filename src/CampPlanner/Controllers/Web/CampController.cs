@@ -24,7 +24,7 @@ namespace CampPlanner.Controllers.Web
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            CampPlannerUser user = await _userManager.FindByIdAsync(User.GetUserId());
+            CampPlannerUser user = await _userManager.FindByNameAsync(User.GetUserName());
 
             var camps = _repository.GetAllCamps(user);
 

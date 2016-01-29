@@ -1,4 +1,5 @@
 ﻿using CampPlanner.Models.Database.Context;
+using Microsoft.Data.Entity;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,13 @@ namespace CampPlanner.Models.Database.Repository
             try
             {
                 _logger.LogInformation("Getting camps for user {userName} from database");
-                return _context.Camps.Where(c => c.Users.Contains(user)).OrderBy(t => t.Name).ToList();
+                //TODO include where clause in select
+                var camps = _context.Camps
+                    .Include(c => c.Users)
+                    //.Where(c => c.Users.Contains(user))
+                    .OrderBy(t => t.Name)
+                    .ToList();
+                return camps.Where(c => c.Users.Contains(user)).ToList();
             }
             catch (Exception ex)
             {

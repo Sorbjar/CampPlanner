@@ -8,9 +8,10 @@ using CampPlanner.Models.Database.Context;
 namespace CampPlanner.Migrations
 {
     [DbContext(typeof(CampPlannerContext))]
-    partial class CampContextModelSnapshot : ModelSnapshot
+    [Migration("20160129141843_InitialPart2")]
+    partial class InitialPart2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
