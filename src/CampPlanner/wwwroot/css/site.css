@@ -95,3 +95,9 @@
     padding-right: 5px;
     height: 100%;
 }
+
+.div-table-cell-btn {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}

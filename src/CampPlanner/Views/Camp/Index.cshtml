@@ -9,7 +9,7 @@
 
         <a asp-controller="Camp" asp-action="New" class="btn btn-primary">New</a>
         @{
-//TODO create angular*@
+//TODO create angular
         }
         <div class="div-table">
             <div class="div-table-row">
@@ -27,11 +27,14 @@
                         <div class="div-table-cell">@camp.StartDate.ToString("dd/MM/yyyy")</div>
                         <div class="div-table-cell">@camp.EndDate.ToString("dd/MM/yyyy")</div>
                         <div class="div-table-cell">
-                            <a asp-controller="Camp" asp-action="Manage" asp-route-id="@camp.Id" class="btn btn-sm btn-primary">Manage</a>
+                            @{
+//TODO button full size of cell
+                            }
+                            <a asp-controller="Camp" asp-action="Manage" asp-route-id="@camp.Id" class="btn btn-sm btn-primary div-table-cell-btn">Manage</a>
                         </div>
                     </div>
-                }
-            }
+                                }
+                                }
         </div>
     </div>
 </div>

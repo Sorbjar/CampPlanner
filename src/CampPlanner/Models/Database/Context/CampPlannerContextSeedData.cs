@@ -42,6 +42,15 @@ namespace CampPlanner.Models.Database.Context
                 seedCamp.Owner = cu;
                 _context.Camps.Add(seedCamp);
 
+                Camp seedCamp2 = new Camp
+                {
+                    Name = "SeedCamp2",
+                    StartDate = DateTime.Now.AddDays(60),
+                    EndDate = DateTime.Now.AddDays(74)
+                };
+                seedCamp2.Owner = cu;
+                _context.Camps.Add(seedCamp2);
+
 
 
                 _context.SaveChanges();
