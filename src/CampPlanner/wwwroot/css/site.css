@@ -61,22 +61,37 @@
     background-color: #eee;
     border: 1px solid #666666;
     border-spacing: 5px; /*cellspacing:poor IE support for  this*/
+    height: 100%;
 }
 
 .div-table-row {
     display: table-row;
     width: auto;
-    height: auto;
+    height: 100%;
     clear: both;
 }
 
-.div-table-col {
+.div-table-cell {
     float: left; /*fix for  buggy browsers*/
     display: table-cell;
     width: 100px;
-    background-color: #ccc;
+    background-color: #666666;
     border: solid;
     border-width: thin;
     padding-left: 5px;
     padding-right: 5px;
+    height: 100%;
+}
+
+.div-table-cell-header {
+    float: left; /*fix for  buggy browsers*/
+    display: table-cell;
+    width: 100px;
+    background-color: #333333;
+    border: solid;
+    font: bold;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 100%;
 }

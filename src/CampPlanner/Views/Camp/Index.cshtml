@@ -9,18 +9,24 @@
 
         <a asp-controller="Camp" asp-action="New" class="btn btn-primary">New</a>
         @{
-            //TODO create angular*@
+//TODO create angular*@
         }
         <div class="div-table">
+            <div class="div-table-row">
+                <div class="div-table-cell-header">Name</div>
+                <div class="div-table-cell-header">Start date</div>
+                <div class="div-table-cell-header">End date</div>
+                <div class="div-table-cell-header"></div>
+            </div>
             @if (Model != null && Model.Count() > 0)
             {
                 @foreach (var camp in Model)
                 {
                     <div class="div-table-row">
-                        <div class="div-table-col">@camp.Name</div>
-                        <div class="div-table-col">@camp.StartDate.ToString("dd/MM/yyyy")</div>
-                        <div class="div-table-col">@camp.EndDate.ToString("dd/MM/yyyy")</div>
-                        <div class="div-table-col">
+                        <div class="div-table-cell">@camp.Name</div>
+                        <div class="div-table-cell">@camp.StartDate.ToString("dd/MM/yyyy")</div>
+                        <div class="div-table-cell">@camp.EndDate.ToString("dd/MM/yyyy")</div>
+                        <div class="div-table-cell">
                             <a asp-controller="Camp" asp-action="Manage" asp-route-id="@camp.Id" class="btn btn-sm btn-primary">Manage</a>
                         </div>
                     </div>
