@@ -18,8 +18,8 @@
                 {
                     <div class="div-table-row">
                         <div class="div-table-col">@camp.Name</div>
-                        <div class="div-table-col">@camp.StartDate</div>
-                        <div class="div-table-col">@camp.EndDate</div>
+                        <div class="div-table-col">@camp.StartDate.ToString("dd/MM/yyyy")</div>
+                        <div class="div-table-col">@camp.EndDate.ToString("dd/MM/yyyy")</div>
                         <div class="div-table-col">
                             <a asp-controller="Camp" asp-action="Manage" asp-route-id="@camp.Id" class="btn btn-sm btn-primary">Manage</a>
                         </div>
