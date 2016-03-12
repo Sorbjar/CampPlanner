@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.Data.Entity;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -35,8 +36,8 @@ namespace CampPlanner.Models.Database.Context
                 Camp seedCamp = new Camp
                 {
                     Name = "SeedCamp",
-                    StartDate = new System.DateTime().AddDays(6),
-                    EndDate = new System.DateTime().AddDays(20)
+                    StartDate = DateTime.Now.AddDays(6),
+                    EndDate = DateTime.Now.AddDays(20)
                 };
                 seedCamp.Owner = cu;
                 _context.Camps.Add(seedCamp);
