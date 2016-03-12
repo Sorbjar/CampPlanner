@@ -38,7 +38,7 @@ namespace CampPlanner.Models.Database.Context
                     StartDate = new System.DateTime().AddDays(6),
                     EndDate = new System.DateTime().AddDays(20)
                 };
-                seedCamp.Users.Add(cu);
+                seedCamp.Owner = cu;
                 _context.Camps.Add(seedCamp);
 
 

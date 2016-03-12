@@ -8,8 +8,8 @@ using CampPlanner.Models.Database.Context;
 namespace CampPlanner.Migrations
 {
     [DbContext(typeof(CampPlannerContext))]
-    [Migration("20160129141843_InitialPart2")]
-    partial class InitialPart2
+    [Migration("20160312152552_InitialDatabase")]
+    partial class InitialDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,8 @@ namespace CampPlanner.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("OwnerId");
+
                     b.Property<DateTime>("StartDate");
 
                     b.HasKey("Id");
@@ -36,8 +38,6 @@ namespace CampPlanner.Migrations
                     b.Property<string>("Id");
 
                     b.Property<int>("AccessFailedCount");
-
-                    b.Property<int?>("CampId");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -163,11 +163,11 @@ namespace CampPlanner.Migrations
                     b.HasAnnotation("Relational:TableName", "AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("CampPlanner.Models.CampPlannerUser", b =>
+            modelBuilder.Entity("CampPlanner.Models.Camp", b =>
                 {
-                    b.HasOne("CampPlanner.Models.Camp")
+                    b.HasOne("CampPlanner.Models.CampPlannerUser")
                         .WithMany()
-                        .HasForeignKey("CampId");
+                        .HasForeignKey("OwnerId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>

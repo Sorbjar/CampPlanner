@@ -5,6 +5,9 @@ using Microsoft.AspNet.Identity;
 using System.Security.Claims;
 using CampPlanner.Models;
 using System.Threading.Tasks;
+using AutoMapper;
+using CampPlanner.ViewModels.Camp;
+using System.Collections.Generic;
 
 namespace CampPlanner.Controllers.Web
 {
@@ -26,7 +29,7 @@ namespace CampPlanner.Controllers.Web
         {
             CampPlannerUser user = await _userManager.FindByNameAsync(User.GetUserName());
 
-            var camps = _repository.GetAllCamps(user);
+            var camps = Mapper.Map<IEnumerable<CampViewModel>>(_repository.GetAllCamps(user));
 
             return View(camps);
         }

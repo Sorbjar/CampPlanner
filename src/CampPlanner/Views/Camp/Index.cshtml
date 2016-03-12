@@ -1,4 +1,4 @@
-@model IEnumerable<CampPlanner.Models.Camp>
+@model IEnumerable<CampPlanner.ViewModels.Camp.CampViewModel>
 @{
     ViewBag.Title = "Camp list";
 }
@@ -8,21 +8,23 @@
         <h1>@ViewBag.Title</h1>
 
         <a asp-controller="Camp" asp-action="New" class="btn btn-primary">New</a>
-
-        @*TODO change to viewmodel*@
-        @*TODO check if null*@
-        @*TODO create angular*@
+        @{
+            //TODO create angular*@
+        }
         <div class="div-table">
-            @foreach (var camp in Model)
+            @if (Model != null && Model.Count() > 0)
             {
-                <div class="div-table-row">
-                    <div class="div-table-col">@camp.Name</div>
-                    <div class="div-table-col">@camp.StartDate</div>
-                    <div class="div-table-col">@camp.EndDate</div>
-                    <div class="div-table-col">
-                        <a asp-controller="Camp" asp-action="Manage" asp-route-id="@camp.Id" class="btn btn-sm btn-primary">Manage</a>
+                @foreach (var camp in Model)
+                {
+                    <div class="div-table-row">
+                        <div class="div-table-col">@camp.Name</div>
+                        <div class="div-table-col">@camp.StartDate</div>
+                        <div class="div-table-col">@camp.EndDate</div>
+                        <div class="div-table-col">
+                            <a asp-controller="Camp" asp-action="Manage" asp-route-id="@camp.Id" class="btn btn-sm btn-primary">Manage</a>
+                        </div>
                     </div>
-                </div>
+                }
             }
         </div>
     </div>

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace CampPlanner.Models
 {
@@ -9,11 +8,11 @@ namespace CampPlanner.Models
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public List<CampPlannerUser> Users { get; private set; }
+        //TODO manage users, managers, admins, ... (other roles)
+        public CampPlannerUser Owner { get; set; }
 
         public Camp()
         {
-            this.Users = new List<CampPlannerUser>();
         }
     }
 }
