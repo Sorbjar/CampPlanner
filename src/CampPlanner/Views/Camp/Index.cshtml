@@ -16,7 +16,7 @@
                 <div class="div-table-cell-header">Name</div>
                 <div class="div-table-cell-header">Start date</div>
                 <div class="div-table-cell-header">End date</div>
-                <div class="div-table-cell-header"></div>
+                <div class="div-table-cell-header-btncontainer"></div>
             </div>
             @if (Model != null && Model.Count() > 0)
             {
@@ -26,11 +26,11 @@
                         <div class="div-table-cell">@camp.Name</div>
                         <div class="div-table-cell">@camp.StartDate.ToString("dd/MM/yyyy")</div>
                         <div class="div-table-cell">@camp.EndDate.ToString("dd/MM/yyyy")</div>
-                        <div class="div-table-cell">
+                        <div class="div-table-cell-btncontainer">
                             @{
 //TODO button full size of cell
                             }
-                            <a asp-controller="Camp" asp-action="Manage" asp-route-id="@camp.Id" class="btn btn-sm btn-primary div-table-cell-btn">Manage</a>
+                            <a asp-controller="Camp" asp-action="Manage" asp-route-id="@camp.Id" class="btn btn-sm btn-primary div-table-cell-btn"><i class="fa fa-edit"></i></a>
                         </div>
                     </div>
                                 }
