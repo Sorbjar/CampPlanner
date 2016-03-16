@@ -1,4 +1,5 @@
 ﻿using CampPlanner.Models.Database.Context;
+using Microsoft.Data.Entity;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,28 @@ namespace CampPlanner.Models.Database.Repository
                     .Where(c => c.Owner.Id == user.Id)
                     .OrderBy(t => t.Name)
                     .ToList();
-                return camps.Where(c => c.Owner == user).ToList();
+                //return camps.Where(c => c.Owner == user).ToList();
+                return camps.ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Could not get camps from database", ex);
+                return null;
+            }
+        }
+
+        public Camp GetCamp(int id)
+        {
+            try
+            {
+                _logger.LogInformation("Getting camp with id {id} from database");
+                var camp = _context.Camps
+                    .Where(c => c.Id == id)
+                    .OrderBy(t => t.Name)
+                    .Include(c => c.Owner)
+                    .ToList()
+                    .FirstOrDefault();
+                return camp;
             }
             catch (Exception ex)
             {

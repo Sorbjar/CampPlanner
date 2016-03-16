@@ -14,5 +14,14 @@ namespace CampPlanner.Models
         public Camp()
         {
         }
+
+        //TODO summary
+        //TODO Correct user handling
+        internal bool CanAccess(CampPlannerUser user)
+        {
+            if (Owner.Id == user.Id)
+                return true;
+            return false;
+        }
     }
 }

@@ -33,5 +33,24 @@ namespace CampPlanner.Controllers.Web
 
             return View(camps);
         }
+
+        // GET: /Camp/Manage
+        [HttpGet]
+        public async Task<IActionResult> Manage(int id)
+        {
+            CampPlannerUser user = await _userManager.FindByNameAsync(User.GetUserName());
+
+            var camp = _repository.GetCamp(id);
+
+            //TODO correct authorisation
+            if (camp.CanAccess(user))
+            {
+                return View(Mapper.Map<CampViewModel>(camp));
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
     }
 }
