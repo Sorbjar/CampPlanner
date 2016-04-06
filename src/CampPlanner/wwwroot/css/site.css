@@ -54,3 +54,74 @@
         .menu li.active {
             font-weight: bold;
         }
+
+.div-table {
+    display: table;
+    width: auto;
+    background-color: #eee;
+    border: 1px solid #666666;
+    border-spacing: 5px; /*cellspacing:poor IE support for  this*/
+    height: 100%;
+}
+
+.div-table-row {
+    display: table-row;
+    width: auto;
+    height: 100%;
+    clear: both;
+}
+
+.div-table-cell {
+    float: left; /*fix for  buggy browsers*/
+    display: table-cell;
+    width: 100px;
+    background-color: #666666;
+    border: solid;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 100%;
+}
+
+.div-table-cell-header {
+    float: left; /*fix for  buggy browsers*/
+    display: table-cell;
+    width: 100px;
+    background-color: #333333;
+    border: solid;
+    font: bold;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 100%;    
+}
+
+.div-table-cell-header-btncontainer {
+    float: left; /*fix for  buggy browsers*/
+    display: table-cell;
+    width: 50px;
+    background-color: #333333;
+    border: solid;
+    border-width: thin;
+    padding-left: 0px;
+    padding-right: 0px;
+    height: 100%;
+}
+
+.div-table-cell-btncontainer {
+    float: left; /*fix for  buggy browsers*/
+    display: table-cell;
+    width: 50px;
+    background-color: #666666;
+    border: solid;
+    border-width: thin;
+    padding-left: 0px;
+    padding-right: 0px;
+    height: 100%;
+}
+
+.div-table-cell-btn {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}

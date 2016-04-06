@@ -1,27 +1,40 @@
+@model IEnumerable<CampPlanner.ViewModels.Camp.CampViewModel>
 @{
     ViewBag.Title = "Camp list";
 }
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-11 col-lg-offset-1">
         <h1>@ViewBag.Title</h1>
-        <p>This will be a usefull site maybe...</p>
 
-        <form>
-            <div class="form-group">
-                <label>Date</label>
-                <input class="form-control" />
+        <a asp-controller="Camp" asp-action="New" class="btn btn-primary">New</a>
+        @{
+//TODO create angular
+        }
+        <div class="div-table">
+            <div class="div-table-row">
+                <div class="div-table-cell-header">Name</div>
+                <div class="div-table-cell-header">Start date</div>
+                <div class="div-table-cell-header">End date</div>
+                <div class="div-table-cell-header-btncontainer"></div>
             </div>
-            <div class="form-group">
-                <label>Location</label>
-                <input class="form-control" />
-            </div>
-            <div>
-                <input type="submit" value="Add" class="btn btn-success" />
-            </div>
-        </form>
-    </div>
-    <div class="col-md-6">
-        <h2>The Map</h2>
+            @if (Model != null && Model.Count() > 0)
+            {
+                @foreach (var camp in Model)
+                {
+                    <div class="div-table-row">
+                        <div class="div-table-cell">@camp.Name</div>
+                        <div class="div-table-cell">@camp.StartDate.ToString("dd/MM/yyyy")</div>
+                        <div class="div-table-cell">@camp.EndDate.ToString("dd/MM/yyyy")</div>
+                        <div class="div-table-cell-btncontainer">
+                            @{
+//TODO button full size of cell
+                            }
+                            <a asp-controller="Camp" asp-action="Manage" asp-route-id="@camp.Id" class="btn btn-sm btn-primary div-table-cell-btn"><i class="fa fa-edit"></i></a>
+                        </div>
+                    </div>
+                                }
+                                }
+        </div>
     </div>
 </div>

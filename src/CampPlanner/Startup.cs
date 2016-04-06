@@ -1,6 +1,8 @@
-﻿using CampPlanner.Models;
+﻿using AutoMapper;
+using CampPlanner.Models;
 using CampPlanner.Models.Database.Context;
 using CampPlanner.Models.Database.Repository;
+using CampPlanner.ViewModels.Camp;
 using Microsoft.AspNet.Authentication.Cookies;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
@@ -103,6 +105,11 @@ namespace CampPlanner
             app.UseStaticFiles();
             
             app.UseIdentity();
+
+            Mapper.Initialize(config =>
+            {
+                config.CreateMap<Camp, CampViewModel>().ReverseMap();
+            });
 
             app.UseMvc(config =>
             {
